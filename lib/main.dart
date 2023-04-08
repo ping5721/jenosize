@@ -6,11 +6,14 @@ import 'package:jenosize/pages/map_page/map_page_argument.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jenosize/pages/search_page/search_page.dart';
 import 'package:jenosize/repository/restaurant_repository.dart';
+import 'package:jenosize/services/shared_preferences.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'pages/search_page/bloc/restaurant_bloc.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefs.init();
   runApp(const JenosizeDemo());
 }
 
@@ -42,7 +45,8 @@ class JenosizeDemo extends StatelessWidget {
             return MaterialPageRoute(
               builder: (context) {
                 return RepositoryProvider(
-                  create: (context) => RestaranRepository(dio),
+                  create: (context) =>
+                      RestaranRepository(dio, SharedPrefs.instance),
                   child: BlocProvider(
                     create: (context) => RestaurantBloc(
                       context.read<RestaranRepository>(),

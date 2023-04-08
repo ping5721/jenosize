@@ -28,7 +28,7 @@ class RestaurantBloc extends Bloc<RestaurantEvent, RestaurantState> {
           );
         }
 
-        if (event is RestarantSearch && event.search.isNotEmpty) {
+        if (event is RestarantSearch) {
           emit(RestaurantLoading());
           await restaurantRepository
               .getList(search: event.search)
