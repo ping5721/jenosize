@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jenosize/model/restuarant_model.dart';
+import 'package:jenosize/model/restuarant.dart';
 
 class RestuarantCard extends StatelessWidget {
   const RestuarantCard({Key? key, required this.restaurant}) : super(key: key);
