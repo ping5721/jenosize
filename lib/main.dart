@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:jenosize/bloc/restaurant_bloc.dart';
 import 'package:jenosize/pages/landing_page.dart';
-import 'package:jenosize/pages/map_page.dart';
-import 'package:jenosize/pages/search_page.dart';
+import 'package:jenosize/pages/map_page/map_page.dart';
+import 'package:jenosize/pages/map_page/map_page_argument.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jenosize/pages/search_page/search_page.dart';
 import 'package:jenosize/repository/restaurant_repository.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+import 'pages/search_page/bloc/restaurant_bloc.dart';
 
 void main() {
   runApp(const JenosizeDemo());
@@ -53,7 +55,11 @@ class JenosizeDemo extends StatelessWidget {
           case '/map':
             return MaterialPageRoute(
               builder: (context) {
-                return const MapPage();
+                final arguments = settings.arguments as MapPageArgument;
+                return MapPage(
+                  title: arguments.title,
+                  latLng: arguments.latLng,
+                );
               },
             );
         }

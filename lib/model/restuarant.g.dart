@@ -13,8 +13,8 @@ _$_Restaurant _$$_RestaurantFromJson(Map<String, dynamic> json) =>
       imageProfile: json['image_profile'] as String,
       imageCover: json['image_cover'] as String,
       address: json['address'] as String,
-      latitude: (json['latitude'] as num).toDouble(),
-      longitude: (json['longitude'] as num).toDouble(),
+      latitude: json['latitude'] as String,
+      longitude: json['longitude'] as String,
       description: json['description'] as String,
     );
 

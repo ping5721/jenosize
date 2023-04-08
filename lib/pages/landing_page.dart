@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:jenosize/pages/map_page/map_page_argument.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -22,7 +24,16 @@ class LandingPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-                await Navigator.of(context).pushNamed('/map');
+                await Navigator.of(context).pushNamed(
+                  '/map',
+                  arguments: MapPageArgument(
+                    'Jenosize',
+                    const LatLng(
+                      13.89422613348108,
+                      100.51625995310687,
+                    ),
+                  ),
+                );
               },
               child: const Text(
                 'แผนที่บริษัท Jenosize',

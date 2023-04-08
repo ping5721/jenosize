@@ -10,8 +10,8 @@ class Restaurant with _$Restaurant {
     required String imageProfile,
     required String imageCover,
     required String address,
-    required double latitude,
-    required double longitude,
+    required String latitude,
+    required String longitude,
     required String description,
   }) = _Restaurant;
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jenosize/bloc/restaurant_bloc.dart';
+import 'package:jenosize/pages/search_page/bloc/restaurant_bloc.dart';
 import 'package:jenosize/widgets/restuarant_card.dart';
 
 class SearchPage extends StatelessWidget {
@@ -26,6 +26,9 @@ class SearchPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
               child: TextFormField(
+                onFieldSubmitted: (String search) {
+                  context.read<RestaurantBloc>().add(RestarantSearch(search));
+                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(
@@ -35,11 +38,11 @@ class SearchPage extends StatelessWidget {
                 ),
               ),
             ),
-            BlocBuilder<RestaurantBloc, RestaurantState>(
-              builder: (context, state) {
-                if (state is RestaurantSuccess) {
-                  return Expanded(
-                    child: ListView.builder(
+            Expanded(
+              child: BlocBuilder<RestaurantBloc, RestaurantState>(
+                builder: (context, state) {
+                  if (state is RestaurantSuccess) {
+                    return ListView.builder(
                       padding: const EdgeInsets.all(20),
                       itemBuilder: (context, index) {
                         return RestuarantCard(
@@ -47,21 +50,21 @@ class SearchPage extends StatelessWidget {
                         );
                       },
                       itemCount: state.restaurants.length,
-                    ),
-                  );
-                }
-                if (state is RestaurantLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-                if (state is RestaurantFailure) {
-                  return const Center(
-                    child: Text('Error'),
-                  );
-                }
-                return const SizedBox();
-              },
+                    );
+                  }
+                  if (state is RestaurantLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (state is RestaurantFailure) {
+                    return const Center(
+                      child: Text('Error'),
+                    );
+                  }
+                  return const SizedBox();
+                },
+              ),
             ),
           ],
         ),

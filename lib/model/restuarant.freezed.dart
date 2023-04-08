@@ -25,8 +25,8 @@ mixin _$Restaurant {
   String get imageProfile => throw _privateConstructorUsedError;
   String get imageCover => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
-  double get latitude => throw _privateConstructorUsedError;
-  double get longitude => throw _privateConstructorUsedError;
+  String get latitude => throw _privateConstructorUsedError;
+  String get longitude => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,8 +47,8 @@ abstract class $RestaurantCopyWith<$Res> {
       String imageProfile,
       String imageCover,
       String address,
-      double latitude,
-      double longitude,
+      String latitude,
+      String longitude,
       String description});
 }
 
@@ -98,11 +98,11 @@ class _$RestaurantCopyWithImpl<$Res, $Val extends Restaurant>
       latitude: null == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       longitude: null == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -125,8 +125,8 @@ abstract class _$$_RestaurantCopyWith<$Res>
       String imageProfile,
       String imageCover,
       String address,
-      double latitude,
-      double longitude,
+      String latitude,
+      String longitude,
       String description});
 }
 
@@ -174,11 +174,11 @@ class __$$_RestaurantCopyWithImpl<$Res>
       latitude: null == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       longitude: null == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -214,9 +214,9 @@ class _$_Restaurant implements _Restaurant {
   @override
   final String address;
   @override
-  final double latitude;
+  final String latitude;
   @override
-  final double longitude;
+  final String longitude;
   @override
   final String description;
 
@@ -271,8 +271,8 @@ abstract class _Restaurant implements Restaurant {
       required final String imageProfile,
       required final String imageCover,
       required final String address,
-      required final double latitude,
-      required final double longitude,
+      required final String latitude,
+      required final String longitude,
       required final String description}) = _$_Restaurant;
 
   factory _Restaurant.fromJson(Map<String, dynamic> json) =
@@ -289,9 +289,9 @@ abstract class _Restaurant implements Restaurant {
   @override
   String get address;
   @override
-  double get latitude;
+  String get latitude;
   @override
-  double get longitude;
+  String get longitude;
   @override
   String get description;
   @override
