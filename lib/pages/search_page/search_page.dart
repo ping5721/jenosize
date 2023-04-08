@@ -42,15 +42,19 @@ class SearchPage extends StatelessWidget {
               child: BlocBuilder<RestaurantBloc, RestaurantState>(
                 builder: (context, state) {
                   if (state is RestaurantSuccess) {
-                    return ListView.builder(
-                      padding: const EdgeInsets.all(20),
-                      itemBuilder: (context, index) {
-                        return RestuarantCard(
-                          restaurant: state.restaurants[index],
-                        );
-                      },
-                      itemCount: state.restaurants.length,
-                    );
+                    if (state.restaurants.isEmpty) {
+                      return const Center(child: Text('No data'));
+                    } else {
+                      return ListView.builder(
+                        padding: const EdgeInsets.all(20),
+                        itemBuilder: (context, index) {
+                          return RestuarantCard(
+                            restaurant: state.restaurants[index],
+                          );
+                        },
+                        itemCount: state.restaurants.length,
+                      );
+                    }
                   }
                   if (state is RestaurantLoading) {
                     return const Center(
